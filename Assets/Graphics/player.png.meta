@@ -10,7 +10,7 @@ TextureImporter:
     second: player_idle_2
   - first:
       213: 6757282713640645180
-    second: player_2
+    second: player_idle_shoot
   - first:
       213: -6984234556297226354
     second: player_jump
@@ -58,13 +58,13 @@ TextureImporter:
     second: player_9
   - first:
       213: -3861952770410913445
-    second: player_10
+    second: player_run_shoot_1
   - first:
       213: 5044450397378941176
-    second: player_11
+    second: player_run_shoot_2
   - first:
       213: 1871739406167786269
-    second: player_12
+    second: player_run_shoot_3
   - first:
       213: 6426868497666326525
     second: player_13
@@ -221,7 +221,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_2
+      name: player_idle_shoot
       rect:
         serializedVersion: 2
         x: 196
@@ -389,7 +389,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_10
+      name: player_run_shoot_1
       rect:
         serializedVersion: 2
         x: 0
@@ -410,7 +410,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_11
+      name: player_run_shoot_2
       rect:
         serializedVersion: 2
         x: 102
@@ -431,7 +431,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_12
+      name: player_run_shoot_3
       rect:
         serializedVersion: 2
         x: 190
@@ -565,7 +565,7 @@ TextureImporter:
         width: 113
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
