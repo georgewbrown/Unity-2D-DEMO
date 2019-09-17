@@ -16,7 +16,7 @@ TextureImporter:
     second: player_jump
   - first:
       213: 1755772209161902963
-    second: player_4
+    second: player_jump_shoot
   - first:
       213: -4148961355465977301
     second: player_run_1
@@ -203,7 +203,7 @@ TextureImporter:
       name: player_idle_2
       rect:
         serializedVersion: 2
-        x: 100
+        x: 101
         y: 288
         width: 42
         height: 48
@@ -263,7 +263,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: player_4
+      name: player_jump_shoot
       rect:
         serializedVersion: 2
         x: 384

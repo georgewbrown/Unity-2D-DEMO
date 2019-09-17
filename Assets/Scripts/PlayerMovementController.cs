@@ -11,7 +11,6 @@ public class PlayerMovementController : MonoBehaviour {
     bool isGrounded;
     bool isShooting;
 
-
     [SerializeField]
     Transform groundCheck = null; // stop err: warning(CS0649) default value = null
 
@@ -29,7 +28,7 @@ public class PlayerMovementController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
+        
         animator = GetComponent<Animator>();
         rb2d = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -39,7 +38,7 @@ public class PlayerMovementController : MonoBehaviour {
 
 
     private void SpawnBullets(float spawnPositionY, float spawnPositionX, string animationTitle)
-    {   isShooting = true;
+    {   
         animator.Play(animationTitle);
         GameObject bullet = (GameObject)Instantiate(bulletRef);
         bullet.transform.position = new Vector3(transform.position.x + spawnPositionY, transform.position.y + spawnPositionX, -1);
@@ -71,40 +70,44 @@ public class PlayerMovementController : MonoBehaviour {
             isGrounded = true;
         }
         else
-        {
+        {   
             isGrounded = false;
+            if(!isShooting) {
             animator.Play("Player_Jump");
+            } else if(isShooting) {
+                 SpawnBullets(.4f, .2f, "Player_Jump_Shoot");
+            }
 
         }
 
-        if((Input.GetKey("d") && Input.GetKey("space")) || (Input.GetKey("right") && Input.GetKey("space")))
+        if((Input.GetKey("d") || Input.GetKey("right") && Input.GetKey("space")))
         {
 
             rb2d.velocity = new Vector2(runSpeed, rb2d.velocity.y);
 
-
+        
             if(isGrounded && isShooting) {
                 SpawnBullets(.4f, .2f, "Player_Run_Shoot");
             }
 
             spriteRenderer.flipX = false;
 
-            return;
 
         } 
-        else if ((Input.GetKey("a") && Input.GetKey("space")) || (Input.GetKey("left") && Input.GetKey("space")))
+        else if ((Input.GetKey("a") || Input.GetKey("left") && Input.GetKey("space")))
         {
             rb2d.velocity = new Vector2(-runSpeed, rb2d.velocity.y);
 
 
-            if(isGrounded  && isShooting) {
+            if(isGrounded && isShooting) {
                 SpawnBullets(- .20f, - .2f, "Player_Run_Shoot");
             }
 
             spriteRenderer.flipX = true;
-            return;
 
-        } else if(Input.GetKey("d") || Input.GetKey("right"))
+        } 
+
+        if(Input.GetKey("d") || Input.GetKey("right"))
         {
             
             rb2d.velocity = new Vector2(runSpeed, rb2d.velocity.y);
@@ -133,13 +136,18 @@ public class PlayerMovementController : MonoBehaviour {
             animator.Play("Player_Idle");
             rb2d.velocity = new Vector2(0, rb2d.velocity.y);
          } 
-         else if(isShooting) 
+         else if(isGrounded && isShooting) 
          {
             SpawnBullets(.4f, .2f, "Player_Idle_Shoot");
          }
 
         }
         
+        if((Input.GetKey("w") || Input.GetKey("up")) && (isGrounded && isShooting)) 
+        {
+            rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
+         }
+     
         if((Input.GetKey("w") || Input.GetKey("up")) && isGrounded) 
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, jumpSpeed);
